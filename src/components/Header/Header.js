@@ -169,7 +169,7 @@ const Circle = styled.div`
   height: 150px;
   position: absolute;
   opacity: 0;
-  animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
+  animation: scaleIn 5s infinite cubic-bezier(.36, .11, .89, .32);
   @keyframes scaleIn {
   from {
     transform: scale(.5, .5);
@@ -227,10 +227,10 @@ const Header = ({ user }) => (
         <Item id="item">
           <img src={logo} width="100" height="100" />
         </Item>
+        <Circle className="circle" style={{ animationDelay: '-4s' }}></Circle>
         <Circle className="circle" style={{ animationDelay: '-3s' }}></Circle>
         <Circle className="circle" style={{ animationDelay: '-2s' }}></Circle>
         <Circle className="circle" style={{ animationDelay: '-1s' }}></Circle>
-        <Circle className="circle" style={{ animationDelay: '0s' }}></Circle>
       </Container>
     </OuterContainer>
     { !user ? unauthBody : authBody}
