@@ -5,6 +5,7 @@ import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import styled from 'styled-components'
 import Home from './Home'
+// import Uploads from './Uploads'
 
 const Inline = styled.div`
     display: inline-block;
@@ -15,7 +16,8 @@ const Candidates = styled.div`
   background: #fafafa;
   border-radius: 10px;
   box-shadow: 10px 10px 10px rgba(215,215,215,.8);
-  height: 300px;
+  min-height: 300px;
+  max-height: 100%;
   width: 500px;
   margin: 15px 25px;
   padding: 20px 30px;
@@ -69,6 +71,14 @@ const Paragraph = styled.p`
   padding: 5px 0;
 `
 
+const Photo = styled.img`
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: inline-block;
+  float: left;
+`
+
 const Profiles = props => {
   const [profiles, setProfiles] = useState([])
   useEffect(() => {
@@ -87,7 +97,12 @@ const Profiles = props => {
     <Inline key={profile._id}>
       <Candidates>
         <div>
+          <Photo src={`${profile.profileUrl}`} alt="Candidate's Portrait" />
+        </div>
+        <div>
           <Name>{profile.name}</Name>
+        </div>
+        <div>
         </div>
         <div>
           <Title>{profile.title}</Title><Content>{profile.location}</Content>

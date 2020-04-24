@@ -69,8 +69,8 @@ class App extends Component {
           <AuthenticatedRoute exact user={user} path='/profiles/:id' render={({ match }) => (
             <Profile match={match} msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute exact user={user} path='/create-profile' render={() => (
-            <ProfileCreate msgAlert={this.msgAlert} user={user} />
+          <AuthenticatedRoute exact user={user} path='/create-profile' render={({ match }) => (
+            <ProfileCreate match={match} msgAlert={this.msgAlert} user={user} />
           )} />
           <AuthenticatedRoute exact user={user} path='/profiles/:id/edit' render={({ match }) => (
             <ProfileEdit match={match} msgAlert={this.msgAlert} user={user} />

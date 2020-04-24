@@ -103,6 +103,14 @@ const SideCandidate = styled.div`
 }
 `
 
+const Photo = styled.img`
+  width: 250px;
+  height: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+`
+
 const Profile = props => {
   const [profile, setProfile] = useState(null)
   const [deleted, setDeleted] = useState(false)
@@ -152,7 +160,7 @@ const Profile = props => {
 
   if (deleted) {
     return <Redirect to={
-      { pathname: '/profiles' }
+      { pathname: '/profiles-owned' }
     } />
   }
 
@@ -161,6 +169,9 @@ const Profile = props => {
       <SideCandidate>
         <h2>{profile.name}</h2>
         <Title>{profile.title}</Title>
+        <div>
+          <Photo src={`${profile.profileUrl}`} alt="Candidate's Portrait" />
+        </div>
         <Fields>Location: {profile.location}</Fields>
         <Fields>Contact: {profile.contact}</Fields>
         <ButtonS primary onClick={destroy}>Delete Profile</ButtonS> {' '}

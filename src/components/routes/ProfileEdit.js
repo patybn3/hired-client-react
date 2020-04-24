@@ -3,13 +3,13 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 import apiUrl from '../../apiConfig'
-import ProfileForm from '../../shared/ProfileForm'
-import Layout from '../../shared/Layout'
+import UpdateProfileForm from '../../shared/UpdateProfileForm'
 import messages from '../AutoDismissAlert/messages'
 
 const ProfileEdit = props => {
   const [profile, setProfile] = useState(
-    { name: '',
+    { file: '',
+      name: '',
       title: '',
       education: '',
       description: '',
@@ -32,11 +32,7 @@ const ProfileEdit = props => {
     })
       // Make sure to update this.setState to our hooks setMovie function
       .then(res => setProfile(res.data.profile))
-      .then(() => props.msgAlert({ // remove the props param from the .then()
-        heading: 'Update Profile Success',
-        message: messages.updateProfileSuccess,
-        variant: 'success'
-      }))
+      // .then(res => setProfile(res.data.profile))
       .catch(() => {
         props.msgAlert({
           heading: 'Update Profile Failed',
@@ -51,21 +47,39 @@ const ProfileEdit = props => {
     // //
     const editedProfile = Object.assign({ ...profile }, upgradedField)
     setProfile(editedProfile)
+    // event.persist()
+    // setProfile(profile => ({ ...profile, [event.target.name]: event.target.value }))
   }
 
   const handleSubmit = event => {
     event.preventDefault()
+    const formData = new FormData(event.target)
 
     axios({
       url: `${apiUrl}/profiles/${props.match.params.id}`,
       method: 'PATCH',
+      contentType: false,
+      processData: false,
       headers: {
         Authorization: `Bearer ${props.user.token}`
       },
-      data: { profile }
+      data: formData
     })
-      .then(() => setUpdate(true))
-      .catch()
+      .then(res => {
+        setUpdate(true)
+        props.msgAlert({ // remove the props param from the .then()
+          heading: 'Update Profile Success',
+          message: messages.updateProfileSuccess,
+          variant: 'success'
+        })
+      })
+      .catch(() => {
+        props.msgAlert({
+          heading: 'Update Profile Failed',
+          message: messages.updateFailure,
+          variant: 'danger'
+        })
+      })
   }
   //
   // const { movie, updated } = this.state
@@ -75,14 +89,14 @@ const ProfileEdit = props => {
   }
 
   return (
-    <Layout>
-      <ProfileForm
+    <div>
+      <UpdateProfileForm
         profile={profile}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         cancelPath={`/profiles/${props.match.params.id}`}
       />
-    </Layout>
+    </div>
   )
 }
 

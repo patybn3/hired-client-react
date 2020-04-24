@@ -8,7 +8,8 @@ import messages from '../AutoDismissAlert/messages'
 
 const ProfileCreate = props => {
   const [profile, setProfile] = useState(
-    { name: '',
+    { file: '',
+      name: '',
       title: '',
       education: '',
       description: '',
@@ -25,18 +26,23 @@ const ProfileCreate = props => {
     const updatedField = { [event.target.name]: event.target.value }
     const editedProfile = Object.assign({ ...profile }, updatedField)
     setProfile(editedProfile)
+    // event.persist()
+    // setProfile(profile => ({ ...profile, [event.target.name]: event.target.value }))
   }
 
   const handleSubmit = event => {
     event.preventDefault()
+    const formData = new FormData(event.target)
 
     axios({
       url: `${apiUrl}/profiles`,
       method: 'POST',
+      contentType: false,
+      processData: false,
       headers: {
         Authorization: `Bearer ${props.user.token}`
       },
-      data: { profile }
+      data: formData
     })
       .then(res => setCreatedProfileId(res.data.profile._id))
       .then(() => props.msgAlert({ // remove the props param from the .then()

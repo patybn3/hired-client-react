@@ -30,105 +30,110 @@ const SpaceDiv = styled.div`
   margin-bottom: 100px;
 `
 
-const ProfileForm = ({ profile, handleSubmit, handleChange, cancelPath }) => (
+const UpdateForm = ({ profile, handleSubmit, handleChange, cancelPath }) => (
   <div className="row">
     <div className="col-sm-10 col-md-8 mx-auto mt-5">
-      <h3>Create a Profile</h3>
+      <h3>Updating Profile:</h3>
       <Form onSubmit={handleSubmit}>
         <SpaceDiv>
-          <Form.Group encType="multipart/form-data">
+          <Form.Group controlId="file" encType="multipart/form-data">
             <Form.Label>Upload A Profile Picture</Form.Label>
             <Form.Control
               type="file"
-              value={profile.profileUrl}
+              defaultValue={profile.profileUrl}
               name="file"
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group >
+          <Form.Group controlId="name">
             <Form.Label>Name</Form.Label>
             <Form.Control
               required
+              type="text"
               placeholder="Your name here"
-              value={profile.name}
+              defaultValue={profile.name}
               name="name"
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group>
+          <Form.Group controlId="title">
             <Form.Label>Title</Form.Label>
             <Form.Control
               required
+              type="text"
               placeholder="Software Engineer"
-              value={profile.title}
+              defaultValue={profile.title}
               name="title"
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group>
+          <Form.Group controlId="education">
             <Form.Label>Education</Form.Label>
             <Form.Control
-              required
+              type="text"
               placeholder="Your Education information here"
-              value={profile.education}
+              defaultValue={profile.education}
               name="education"
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group>
+          <Form.Group controlId="location">
             <Form.Label>Location</Form.Label>
             <Form.Control
-              required
+              type="text"
               placeholder="Where are you located?"
-              value={profile.location}
+              defaultValue={profile.location}
               name="location"
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group>
+          <Form.Group controlId="salary">
             <Form.Label>Salary</Form.Label>
             <Form.Control
-              required
+              type="text"
               placeholder="How much are you looking for?"
-              value={profile.salary}
+              defaultValue={profile.salary}
               name="salary"
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group>
+          <Form.Group controlId="contact">
             <Form.Label>Contact Email</Form.Label>
             <Form.Control
-              required
+              type="text"
               placeholder="Email"
-              mailto={profile.contact}
-              value={profile.contact}
+              // mailto={profile.contact}
+              defaultValue={profile.contact}
               name="contact"
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group>
+          <Form.Group controlId="website">
             <Form.Label>Website</Form.Label>
             <Form.Control
+              type="text"
               placeholder="Your Webpage (not required)"
-              value={profile.website}
+              defaultValue={profile.website}
               name="website"
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group>
+          <Form.Group controlId="portfolio">
             <Form.Label>Portfolio</Form.Label>
             <Form.Control
+              type="text"
               placeholder="Ex. GitHub (not required)"
-              value={profile.portfolio}
+              defaultValue={profile.portfolio}
               name="portfolio"
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group>
+          <Form.Group controlId="other">
             <Form.Label>Other Website</Form.Label>
             <Form.Control
+              type="text"
               placeholder="Ex. LinkedIn (not required)"
-              value={profile.other}
+              defaultValue={profile.other}
               name="other"
               onChange={handleChange}
             />
@@ -159,4 +164,4 @@ const ProfileForm = ({ profile, handleSubmit, handleChange, cancelPath }) => (
   </div>
 )
 
-export default ProfileForm
+export default UpdateForm

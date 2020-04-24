@@ -15,7 +15,8 @@ const Candidates = styled.div`
   background: rgba(113,185,255,.4);
   border-radius: 10px;
   font-size: 20px;
-  height: 300px;
+  min-height: 300px;
+  max-height: 100%;
   width: 500px;
   margin: 15px 25px;
   padding: 20px;
@@ -58,7 +59,7 @@ const Content = styled.h6`
 `
 
 const Description = styled.h5`
-  text-align: center;
+  text-align: left;
   color: #d1941b;
   padding: 10px 0 0;
 `
@@ -66,6 +67,14 @@ const Paragraph = styled.p`
   text-align: center;
   color: #00235c;
   padding: 5px 0;
+`
+
+const Photo = styled.img`
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: inline-block;
+  float: left;
 `
 
 const ProfilesOwned = props => {
@@ -85,6 +94,9 @@ const ProfilesOwned = props => {
   const profilesList = profiles.map(profile => (
     <Inline key={profile._id}>
       <Candidates>
+        <div>
+          <Photo src={`${profile.profileUrl}`} alt="Candidate's Portrait" />
+        </div>
         <div>
           <Name>{profile.name}</Name>
         </div>
