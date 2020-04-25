@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import styled, { css } from 'styled-components'
 import Form from 'react-bootstrap/Form'
 import Home from '../components/routes/Home'
+// import Img from 'react-cool-img'
+// import defaultImg from '../components/routes/images/addI.png'
 
 const Button = styled.button`
   text-align: center;
@@ -24,71 +26,241 @@ cursor: pointer;
     css`
       padding: 5px 35px;
     `};
+
+    ${props =>
+    props.remove &&
+      css`
+        margin: 10px 0 70px;
+      `};
 `
 
 const SpaceDiv = styled.div`
   margin-bottom: 100px;
 `
 
+const Create = styled.h3`
+  font-weight: 600;
+  color: #00235c;
+  margin-bottom: 40px;
+  text-align: center;
+`
+
+const Upload = styled.label`
+  color: #00235c;
+  text-align: center;
+  border-radius: 33px;
+  border: 2px solid #edb442;
+  background: #edb442;
+  color: #00235c;
+  padding: 5px 20px;
+  margin: 10px 0 5px;
+  justifyContent: "center";
+  alignItems: "center";
+  :hover {
+background: #00235c;
+color: #fff;
+cursor: pointer;
+}
+`
+
+const PreviewImg = styled.img`
+  width: 350px;
+  height: 100%;
+  border-radius: 5px;
+  margin-bottom: 15px;
+`
+
+class UploadPreview extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = { file: null }
+    this.onChange = this.onChange.bind(this)
+    this.resetFile = this.resetFile.bind(this)
+  }
+  onChange (event) {
+    this.setState({
+      file: URL.createObjectURL(event.target.files[0])
+    })
+  }
+
+  resetFile (event) {
+    event.preventDefault()
+    this.setState({ file: null })
+  }
+  render () {
+    return (
+      <div className= 'input-group'>
+        <Form.Group encType="multipart/form-data">
+          <div className='custom-file'>
+            <Form.Label style={{
+              fontWeight: '600',
+              color: '#00235c'
+            }}>Upload A Profile Picture</Form.Label>{ ' ' }
+            <Upload className="custom-file-lable" htmlFor="inputGroupFile01">
+          Choose file
+            </Upload>
+            { ' ' }
+            {this.state.file && (
+              <div style={{ textAlign: 'right', marginRight: '20px' }}>
+                <Button remove onClick={this.resetFile}>Remove File</Button>
+              </div>
+            )}
+            <Form.Control
+              type="file"
+              className='custom-file-input'
+              style={{ background: 'transparent' }}
+              name="file"
+              onChange={this.onChange}
+              id="inputGroupFile01"
+            />
+          </div>
+        </Form.Group>
+        <PreviewImg src={this.state.file} />
+      </div>
+    )
+  }
+}
+
 const ProfileForm = ({ profile, handleSubmit, handleChange, cancelPath }) => (
   <div className="row">
     <div className="col-sm-10 col-md-8 mx-auto mt-5">
-      <h3>Create a Profile</h3>
+      <Create>Create a Profile</Create>
       <Form onSubmit={handleSubmit}>
         <SpaceDiv>
-          <Form.Group encType="multipart/form-data">
-            <Form.Label>Upload A Profile Picture</Form.Label>
-            <Form.Control
-              type="file"
-              value={profile.profileUrl}
-              name="file"
-              onChange={handleChange}
-            />
-          </Form.Group>
-          <Form.Group >
-            <Form.Label>Name</Form.Label>
-            <Form.Control
-              required
-              placeholder="Your name here"
-              value={profile.name}
-              name="name"
-              onChange={handleChange}
-            />
-          </Form.Group>
+          <UploadPreview
+            value={profile.profileUrl}
+            name="file"
+            onChange={handleChange}/>
+          <div action="" className="row">
+            <div className="col">
+              <Form.Group >
+                <Form.Label style={{
+                  fontWeight: '600',
+                  color: '#00235c'
+                }}>
+                Name</Form.Label>
+                <Form.Control
+                  required
+                  style={{ fontStyle: 'italic' }}
+                  placeholder="Enter your name"
+                  value={profile.name}
+                  name="name"
+                  onChange={handleChange}
+                />
+              </Form.Group>
+            </div>
+            <div className="col">
+              <Form.Group>
+                <Form.Label style={{
+                  fontWeight: '600',
+                  color: '#00235c'
+                }}>
+                Title</Form.Label>
+                <Form.Control
+                  required
+                  style={{ fontStyle: 'italic' }}
+                  placeholder="e.g., Software Engineer"
+                  value={profile.title}
+                  name="title"
+                  onChange={handleChange}
+                />
+              </Form.Group>
+            </div>
+          </div>
+          <div action="" className="row">
+            <div className="col">
+              <Form.Group>
+                <Form.Label style={{ fontWeight: '600', color: '#00235c' }}>
+                Education</Form.Label>
+                <Form.Control
+                  required
+                  style={{ fontStyle: 'italic' }}
+                  placeholder="Your Education information here"
+                  value={profile.education}
+                  name="education"
+                  onChange={handleChange}
+                />
+              </Form.Group>
+            </div>
+            <div className="col">
+              <Form.Group>
+                <Form.Label style={{ fontWeight: '600', color: '#00235c' }}>
+                Location</Form.Label>
+                <Form.Control
+                  required
+                  style={{ fontStyle: 'italic' }}
+                  placeholder="Where are you located?"
+                  value={profile.location}
+                  name="location"
+                  onChange={handleChange}
+                />
+              </Form.Group>
+            </div>
+          </div>
+          <div action="" className="row">
+            <div className="col">
+              <Form.Group>
+                <Form.Label style={{ fontWeight: '600', color: '#00235c' }}>
+                Contact Email</Form.Label>
+                <Form.Control
+                  required
+                  style={{ fontStyle: 'italic' }}
+                  placeholder="Email"
+                  mailto={profile.contact}
+                  value={profile.contact}
+                  name="contact"
+                  onChange={handleChange}
+                />
+              </Form.Group>
+            </div>
+            <div className="col">
+              <Form.Group>
+                <Form.Label style={{ fontWeight: '600', color: '#00235c' }}>
+                Website</Form.Label>
+                <Form.Control
+                  style={{ fontStyle: 'italic' }}
+                  placeholder="Your Webpage (not required)"
+                  value={profile.website}
+                  name="website"
+                  onChange={handleChange}
+                />
+              </Form.Group>
+            </div>
+          </div>
+          <div action="" className="row">
+            <div className="col">
+              <Form.Group>
+                <Form.Label style={{ fontWeight: '600', color: '#00235c' }}>
+                Portfolio</Form.Label>
+                <Form.Control
+                  style={{ fontStyle: 'italic' }}
+                  placeholder="e.g., GitHub (not required)"
+                  value={profile.portfolio}
+                  name="portfolio"
+                  onChange={handleChange}
+                />
+              </Form.Group>
+            </div>
+            <div className="col">
+              <Form.Group>
+                <Form.Label style={{ fontWeight: '600', color: '#00235c' }}>
+                Other Website</Form.Label>
+                <Form.Control
+                  style={{ fontStyle: 'italic' }}
+                  placeholder="e.g., LinkedIn (not required)"
+                  value={profile.other}
+                  name="other"
+                  onChange={handleChange}
+                />
+              </Form.Group>
+            </div>
+          </div>
           <Form.Group>
-            <Form.Label>Title</Form.Label>
+            <Form.Label style={{ fontWeight: '600', color: '#00235c' }}>
+            Salary</Form.Label>
             <Form.Control
               required
-              placeholder="Software Engineer"
-              value={profile.title}
-              name="title"
-              onChange={handleChange}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Education</Form.Label>
-            <Form.Control
-              required
-              placeholder="Your Education information here"
-              value={profile.education}
-              name="education"
-              onChange={handleChange}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Location</Form.Label>
-            <Form.Control
-              required
-              placeholder="Where are you located?"
-              value={profile.location}
-              name="location"
-              onChange={handleChange}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Salary</Form.Label>
-            <Form.Control
-              required
+              style={{ fontStyle: 'italic' }}
               placeholder="How much are you looking for?"
               value={profile.salary}
               name="salary"
@@ -96,47 +268,28 @@ const ProfileForm = ({ profile, handleSubmit, handleChange, cancelPath }) => (
             />
           </Form.Group>
           <Form.Group>
-            <Form.Label>Contact Email</Form.Label>
-            <Form.Control
+            <Form.Label style={{ fontWeight: '600', color: '#00235c' }}>
+            Skills</Form.Label>
+            <textarea
               required
-              placeholder="Email"
-              mailto={profile.contact}
-              value={profile.contact}
-              name="contact"
-              onChange={handleChange}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Website</Form.Label>
-            <Form.Control
-              placeholder="Your Webpage (not required)"
-              value={profile.website}
-              name="website"
-              onChange={handleChange}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Portfolio</Form.Label>
-            <Form.Control
-              placeholder="Ex. GitHub (not required)"
-              value={profile.portfolio}
-              name="portfolio"
-              onChange={handleChange}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Other Website</Form.Label>
-            <Form.Control
-              placeholder="Ex. LinkedIn (not required)"
-              value={profile.other}
-              name="other"
+              style={{ fontStyle: 'italic' }}
+              className="form-control"
+              id="exampleFormControlTextarea2"
+              rows="2"
+              maxLength={30}
+              value={profile.skills}
+              name="skills"
+              type="text"
+              placeholder="Relevant Skills (separated by comma)"
               onChange={handleChange}
             />
           </Form.Group>
           <Form.Group controlId="description">
-            <Form.Label>Description</Form.Label>
+            <Form.Label style={{ fontWeight: '600', color: '#00235c' }}>
+            Description</Form.Label>
             <textarea
               required
+              style={{ fontStyle: 'italic' }}
               className="form-control"
               id="exampleFormControlTextarea1"
               rows="31"

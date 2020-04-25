@@ -6,6 +6,8 @@ import apiUrl from '../../apiConfig'
 import styled, { css } from 'styled-components'
 import messages from '../AutoDismissAlert/messages'
 import Home from './Home'
+import Img from 'react-cool-img'
+import defaultImg from './images/noimage.png'
 
 const Your = styled.h2`
   text-align: center;
@@ -103,13 +105,13 @@ const SideCandidate = styled.div`
 }
 `
 
-const Photo = styled.img`
-  width: 250px;
-  height: 100%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-`
+// const Photo = styled.img`
+//   width: 250px;
+//   height: 100%;
+//   margin-top: 10px;
+//   margin-bottom: 10px;
+//   border-radius: 5px;
+// `
 
 const Profile = props => {
   const [profile, setProfile] = useState(null)
@@ -170,7 +172,16 @@ const Profile = props => {
         <h2>{profile.name}</h2>
         <Title>{profile.title}</Title>
         <div>
-          <Photo src={`${profile.profileUrl}`} alt="Candidate's Portrait" />
+          <Img
+            style={{ width: '250px',
+              height: '100%',
+              borderRadius: '5px',
+              marginTop: '10px',
+              marginBottom: '10px' }}
+            placeholder={defaultImg}
+            src={`${profile.profileUrl}`}
+            alt='Portrait'
+          />
         </div>
         <Fields>Location: {profile.location}</Fields>
         <Fields>Contact: {profile.contact}</Fields>

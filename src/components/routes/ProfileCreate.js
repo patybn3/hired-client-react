@@ -14,6 +14,7 @@ const ProfileCreate = props => {
       education: '',
       description: '',
       location: '',
+      skills: '',
       salary: '',
       contact: '',
       website: '',

@@ -73,11 +73,11 @@ class SignUp extends Component {
     return (
       <div className="row">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
-          <h3>Sign Up</h3>
+          <h3 style={{ fontWeight: '600', color: '#00235c' }}>Sign Up</h3>
           <Form onSubmit={this.onSignUp}>
             <SpaceDiv>
               <Form.Group controlId="email">
-                <Form.Label>Email address</Form.Label>
+                <Form.Label style={{ color: '#00235c' }}>Email address</Form.Label>
                 <Form.Control
                   required
                   type="email"
@@ -88,7 +88,7 @@ class SignUp extends Component {
                 />
               </Form.Group>
               <Form.Group controlId="password">
-                <Form.Label>Password</Form.Label>
+                <Form.Label style={{ color: '#00235c' }}>Password</Form.Label>
                 <Form.Control
                   required
                   name="password"
@@ -99,7 +99,7 @@ class SignUp extends Component {
                 />
               </Form.Group>
               <Form.Group controlId="passwordConfirmation">
-                <Form.Label>Password Confirmation</Form.Label>
+                <Form.Label style={{ color: '#00235c' }}>Password Confirmation</Form.Label>
                 <Form.Control
                   required
                   name="passwordConfirmation"

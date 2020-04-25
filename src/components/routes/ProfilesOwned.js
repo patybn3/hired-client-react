@@ -5,6 +5,8 @@ import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import styled from 'styled-components'
 import Home from './Home'
+import Img from 'react-cool-img'
+import defaultImg from './images/noimage.png'
 
 const Inline = styled.div`
     display: inline-block;
@@ -59,7 +61,7 @@ const Content = styled.h6`
 `
 
 const Description = styled.h5`
-  text-align: left;
+  text-align: center;
   color: #d1941b;
   padding: 10px 0 0;
 `
@@ -68,14 +70,14 @@ const Paragraph = styled.p`
   color: #00235c;
   padding: 5px 0;
 `
-
-const Photo = styled.img`
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  display: inline-block;
-  float: left;
-`
+//
+// const Photo = styled.img`
+//   width: 150px;
+//   height: 150px;
+//   border-radius: 50%;
+//   display: inline-block;
+//   float: left;
+// `
 
 const ProfilesOwned = props => {
   const [profiles, setProfiles] = useState([])
@@ -95,7 +97,16 @@ const ProfilesOwned = props => {
     <Inline key={profile._id}>
       <Candidates>
         <div>
-          <Photo src={`${profile.profileUrl}`} alt="Candidate's Portrait" />
+          <Img
+            style={{ width: '150px',
+              height: '150px',
+              borderRadius: '50%',
+              display: 'inline-block',
+              float: 'left' }}
+            placeholder={defaultImg}
+            src={`${profile.profileUrl}`}
+            alt='Portrait'
+          />
         </div>
         <div>
           <Name>{profile.name}</Name>

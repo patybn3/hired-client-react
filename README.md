@@ -34,7 +34,7 @@ it runs successfully.
 
 ## Other dependencies
 
-This project used Styles Components CSS for styling. To install styled components:
+This project used Styled Components CSS for styling. To install styled components:
 1. `npm install styled-components` - You might see the following message:
   - `npm WARN bootstrap@4.3.1 requires a peer of jquery@1.9.1 - 3 but none is installed. You must install peer dependencies yourself.
 
@@ -44,11 +44,14 @@ This project used Styles Components CSS for styling. To install styled component
   - `npm install --save bootstrap`
   - `npm install jquery@1.9.1`
   - `npm install popper.js --save`
-3. Run Style Component again: `npm install styled-components`
+3. Run Styled Component again: `npm install styled-components`
+  - Please note, Styled Components was used with all non pre styled tags. Inline styling was used with any pre styled tag (by a package, like bootstrap, for example).
 
 4. The following package was installed to facilitate the styling of this page's footer: `npm install react-sticky-footer --save`
 5.  Smooth Scroll feature was added with the following package:
   - `npm i react-scroll-to --save`
+6 - React Cool Image was used to display an no photo image for the candidates that did not add a photo:
+  - `npm install --save react-cool-img`
 
 
 ## Requirements

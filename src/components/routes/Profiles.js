@@ -5,6 +5,8 @@ import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import styled from 'styled-components'
 import Home from './Home'
+import Img from 'react-cool-img'
+import defaultImg from './images/noimage.png'
 // import Uploads from './Uploads'
 
 const Inline = styled.div`
@@ -15,9 +17,8 @@ const Inline = styled.div`
 const Candidates = styled.div`
   background: #fafafa;
   border-radius: 10px;
-  box-shadow: 10px 10px 10px rgba(215,215,215,.8);
-  min-height: 300px;
-  max-height: 100%;
+  box-shadow: 10px 10px 10px rgba(215,215,215,.6);
+  height: 100%;
   width: 500px;
   margin: 15px 25px;
   padding: 20px 30px;
@@ -44,7 +45,7 @@ const Candidates = styled.div`
 }
 `
 
-const Name = styled.h2`
+const Name = styled.h1`
   text-align: center;
   color: #00235c;
 `
@@ -55,32 +56,35 @@ const Title = styled.p`
   font-size: 18px;
   font-style: italic;
 `
-const Content = styled.h6`
+const Location = styled.h6`
   color: #00235c;
   text-align: center;
+  margin-top: -17px;
+  margin-bottom: 30px;
 `
 
-const Description = styled.h5`
-  text-align: center;
-  color: #d1941b;
-  padding: 10px 0 0;
-`
-const Paragraph = styled.p`
-  text-align: center;
-  color: #00235c;
-  padding: 5px 0;
-`
-
-const Photo = styled.img`
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  display: inline-block;
-  float: left;
-`
+// const Description = styled.h5`
+//   text-align: center;
+//   color: #d1941b;
+//   padding: 10px 0 0;
+// `
+// const Paragraph = styled.p`
+//   text-align: right;
+//   color: #00235c;
+//   padding: 5px 0;
+// `
+//
+// const Photo = styled.img`
+//   width: 150px;
+//   height: 150px;
+//   border-radius: 50%;
+//   display: inline-block;
+//   float: left;
+// `
 
 const Profiles = props => {
   const [profiles, setProfiles] = useState([])
+
   useEffect(() => {
     axios({
       url: `${apiUrl}/profiles`,
@@ -97,7 +101,16 @@ const Profiles = props => {
     <Inline key={profile._id}>
       <Candidates>
         <div>
-          <Photo src={`${profile.profileUrl}`} alt="Candidate's Portrait" />
+          <Img
+            style={{ width: '150px',
+              height: '150px',
+              borderRadius: '50%',
+              display: 'inline-block',
+              float: 'left' }}
+            placeholder={defaultImg}
+            src={`${profile.profileUrl}`}
+            alt='Portrait'
+          />
         </div>
         <div>
           <Name>{profile.name}</Name>
@@ -105,15 +118,9 @@ const Profiles = props => {
         <div>
         </div>
         <div>
-          <Title>{profile.title}</Title><Content>{profile.location}</Content>
+          <Title>{profile.title}</Title> <Location>in {profile.location}</Location>
         </div>
-        <Description>
-          <div>
-            <Description>Short Description:</Description>
-            <Paragraph>{profile.name} is a {profile.title} who is current located in {profile.location}...</Paragraph>
-          </div>
-        </Description>
-        <Link to={`/profiles/${profile._id}`}>See More</Link>
+        <Link to={`/profiles/${profile._id}`}>See This Candidate</Link>
       </Candidates>
     </Inline>
   ))
