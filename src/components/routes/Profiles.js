@@ -45,7 +45,7 @@ const Candidates = styled.div`
 }
 `
 
-const Name = styled.h1`
+const Name = styled.h2`
   text-align: center;
   color: #00235c;
 `
@@ -63,11 +63,14 @@ const Location = styled.h6`
   margin-bottom: 30px;
 `
 
-// const Description = styled.h5`
-//   text-align: center;
-//   color: #d1941b;
-//   padding: 10px 0 0;
-// `
+const Skills = styled.p`
+  color: #fff;
+  text-align: center;
+  padding: 10px 0 0;
+  background-color: #00235c;
+  border-radius: 5px;
+  padding-bottom: 5px;
+`
 // const Paragraph = styled.p`
 //   text-align: right;
 //   color: #00235c;
@@ -120,7 +123,11 @@ const Profiles = props => {
         <div>
           <Title>{profile.title}</Title> <Location>in {profile.location}</Location>
         </div>
-        <Link to={`/profiles/${profile._id}`}>See This Candidate</Link>
+        <div>
+          <Skills>{profile.skills} {''}<Link to={`/profiles/${profile._id}`}>
+          ...See More</Link>
+          </Skills>
+        </div>
       </Candidates>
     </Inline>
   ))

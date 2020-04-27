@@ -267,8 +267,8 @@ const UpdateForm = ({ profile, handleSubmit, handleChange, cancelPath }) => (
               className="form-control"
               id="exampleFormControlTextarea2"
               rows="2"
-              maxLength={30}
-              defaultValue={profile.skills}
+              maxLength={100}
+              value={profile.skills}
               name="skills"
               type="text"
               placeholder="Relevant Skills (separated by comma)"
