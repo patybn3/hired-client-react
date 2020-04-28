@@ -23,6 +23,10 @@ const Candidates = styled.div`
   margin: 15px 25px;
   padding: 20px 30px;
   text-align: right;
+  :hover {
+background: rgba(113,185,255,.4);
+cursor: pointer;
+}
 
   @media (max-width: 1024px) {
      width: 430px;
@@ -34,12 +38,10 @@ const Candidates = styled.div`
     margin: 15px 0;
 }
   @media (max-width: 425px) {
-    height: 100%;
     width: 400px;
     margin: 10px 0;
 }
  @media (max-width: 375px) {
-   height: 100%;
    width: 100%;
    margin: 10px 0;
 }
@@ -66,10 +68,19 @@ const Location = styled.h6`
 const Skills = styled.p`
   color: #fff;
   text-align: center;
-  padding: 10px 0 0;
-  background-color: #00235c;
+  padding: 5px;
   border-radius: 5px;
-  padding-bottom: 5px;
+  background: #00235c;
+  display: inline-block;
+  float: center;
+  margin-right: 3px;
+`
+
+const SkillTitle = styled.h6`
+  color: #00235c;
+  text-align: center;
+  margin-top: 17px;
+  margin-bottom: 10px;
 `
 // const Paragraph = styled.p`
 //   text-align: right;
@@ -102,33 +113,43 @@ const Profiles = props => {
 
   const profilesList = profiles.map(profile => (
     <Inline key={profile._id}>
-      <Candidates>
-        <div>
-          <Img
-            style={{ width: '150px',
-              height: '150px',
-              borderRadius: '50%',
-              display: 'inline-block',
-              float: 'left' }}
-            placeholder={defaultImg}
-            src={`${profile.profileUrl}`}
-            alt='Portrait'
-          />
-        </div>
-        <div>
-          <Name>{profile.name}</Name>
-        </div>
-        <div>
-        </div>
-        <div>
-          <Title>{profile.title}</Title> <Location>in {profile.location}</Location>
-        </div>
-        <div>
-          <Skills>{profile.skills} {''}<Link to={`/profiles/${profile._id}`}>
-          ...See More</Link>
-          </Skills>
-        </div>
-      </Candidates>
+      <Link
+        to={`/profiles/${profile._id}`}
+        style={{ textDecoration: 'none' }}
+      >
+        <Candidates>
+          <div>
+            <Img
+              style={{
+                width: '150px',
+                height: '150px',
+                borderRadius: '50%',
+                display: 'inline-block',
+                float: 'left',
+                objectFit: 'cover',
+                objectPosition: '40% 0'
+              }}
+              placeholder={defaultImg}
+              src={`${profile.profileUrl}`}
+              alt='Portrait'
+            />
+          </div>
+          <div>
+            <Name>{profile.name}</Name>
+          </div>
+          <div>
+          </div>
+          <div>
+            <Title>{profile.title}</Title> <Location>in {profile.location}</Location>
+          </div>
+          <div>
+            <SkillTitle>Relevant Skills:</SkillTitle>
+            <Skills>{profile.skills[0]}</Skills>{' '}
+            <Skills>{profile.skills[1]}</Skills>{' '}
+            <Skills>{profile.skills[2]}</Skills>...
+          </div>
+        </Candidates>
+      </Link>
     </Inline>
   ))
 

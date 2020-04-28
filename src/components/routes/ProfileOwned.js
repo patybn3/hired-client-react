@@ -7,7 +7,7 @@ import styled, { css } from 'styled-components'
 import messages from '../AutoDismissAlert/messages'
 import Home from './Home'
 import Img from 'react-cool-img'
-import defaultImg from './images/noimage.png'
+import defaultImg from './images/addImage.png'
 
 const Your = styled.h2`
   text-align: center;
@@ -76,11 +76,27 @@ const Welcome = styled.h3`
 
 const Fields = styled.p`
   color: #00235c;
+  margin-top: 20px;
+  margin-bottom: 10px;
+`
+
+const Description = styled.h5`
+  color: #00235c;
+  text-align: center;
+  margin: 25px;
+`
+
+const FieldsBackground = styled.p`
+  color: #00235c;
+  background: #ffd582;
+  padding: 10px;
 `
 
 const Title = styled.p`
   font-style: italic;
+  font-weight: 600;
   color: #d1941b;
+  font-size: 20px;
 `
 
 const SideCandidate = styled.div`
@@ -104,7 +120,23 @@ const SideCandidate = styled.div`
      margin: 0 0 10px 0;
 }
 `
+const Skills = styled.p`
+  color: #00235c;
+  /* text-align: center; */
+  padding: 5px;
+  border-radius: 5px;
+  background: #edb442;
+  display: inline-block;
+  float: center;
+  margin-right: 3px;
+`
 
+const SkillTitle = styled.h6`
+  color: #00235c;
+  text-align: center;
+  margin-top: 17px;
+  margin-bottom: 20px;
+`
 // const Photo = styled.img`
 //   width: 250px;
 //   height: 100%;
@@ -183,8 +215,26 @@ const Profile = props => {
             alt='Portrait'
           />
         </div>
-        <Fields>Location: {profile.location}</Fields>
-        <Fields>Contact: {profile.contact}</Fields>
+        <Fields><strong>Location: </strong>{profile.location}</Fields>
+        <div>
+          <SkillTitle><strong>Relevant Skills:</strong></SkillTitle>
+          <Skills>{profile.skills[0]}</Skills>{' '}
+          <Skills>{profile.skills[1]}</Skills>{' '}
+          <Skills>{profile.skills[2]}</Skills>{' '}
+          <Skills>{profile.skills[3]}</Skills>{' '}
+          <Skills>{profile.skills[4]}</Skills>{' '}
+          <Skills>{profile.skills[5]}</Skills>{' '}
+          <Skills>{profile.skills[6]}</Skills>{' '}
+          <Skills>{profile.skills[7]}</Skills>{' '}
+          <Skills>{profile.skills[8]}</Skills>{' '}
+          <Skills>{profile.skills[9]}</Skills>{' '}
+        </div>
+        <Fields><strong>Email this Candidate:</strong>{' '}
+          <a href={'mailto:' + profile.contact}>{profile.contact}</a>
+        </Fields>
+        <Fields><strong>Website:</strong> {profile.website}</Fields>
+        <Fields><strong>Portfolio:</strong> {profile.portfolio}</Fields>
+        <Fields><strong>Other Website:</strong> {profile.other}</Fields>
         <ButtonS primary onClick={destroy}>Delete Profile</ButtonS> {' '}
         <Link to={`/profiles/${props.match.params.id}/edit`}>
           <ButtonS>Edit</ButtonS>
@@ -198,12 +248,12 @@ const Profile = props => {
         <Fields><strong>Name:</strong> {profile.name}</Fields>
         <Fields><strong>Title:</strong> {profile.title}</Fields>
         <Fields><strong>Education:</strong> {profile.education}</Fields>
-        <Fields><strong>Website:</strong> {profile.website}</Fields>
-        <Fields><strong>Portfolio:</strong> {profile.portfolio}</Fields>
-        <Fields><strong>Other Website:</strong> {profile.other}</Fields>
-        <Fields><strong>Description:</strong></Fields>
+        <Description><strong>Description:</strong></Description>
         <Fields>{profile.description}</Fields>
-        <Fields><strong>Salary Requirements:</strong> {profile.salary}</Fields>
+        <div>
+          <FieldsBackground><strong>Salary Requirements:</strong>
+            $ {profile.salary}</FieldsBackground>
+        </div>
       </Candidate>
       <Home />
     </div>

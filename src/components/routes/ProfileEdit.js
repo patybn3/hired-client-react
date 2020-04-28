@@ -14,7 +14,7 @@ const ProfileEdit = props => {
       education: '',
       description: '',
       location: '',
-      skills: '',
+      skills: [],
       salary: '',
       contact: '',
       website: '',
