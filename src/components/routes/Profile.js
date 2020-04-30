@@ -250,7 +250,7 @@ const Profile = props => {
           <Description><strong>Description:</strong></Description>
           <Fields>{profile.description}</Fields>
           <div>
-            <FieldsBackground><strong>Salary Requirements:</strong>
+            <FieldsBackground><strong>Salary Requirements:</strong>{' '}
               $ {profile.salary}</FieldsBackground>
           </div>
         </Candidate>
@@ -292,9 +292,9 @@ const Profile = props => {
         <Fields><strong>Email this Candidate:</strong>{' '}
           <a href={'mailto:' + profile.contact}>{profile.contact}</a>
         </Fields>
-        <Fields><strong>Website:</strong> {profile.website}</Fields>
-        <Fields><strong>Portfolio:</strong> {profile.portfolio}</Fields>
-        <Fields><strong>Other Website:</strong> {profile.other}</Fields>
+        <Fields><strong>Website:</strong> { 'N/A' || profile.website }</Fields>
+        <Fields><strong>Portfolio:</strong> { 'N/A' || profile.portfolio }</Fields>
+        <Fields><strong>Other Website:</strong> { 'N/A' || profile.other }</Fields>
         <SpaceLink>
           <Link to="/profiles">Back to all Profiles</Link>
         </SpaceLink>
@@ -306,7 +306,7 @@ const Profile = props => {
         <Fields><strong>Education:</strong> {profile.education}</Fields>
         <Description><strong>Description:</strong></Description>
         <Fields>{profile.description}</Fields>
-        <FieldsBackground><strong>Salary Requirements:</strong>
+        <FieldsBackground><strong>Salary Requirements:</strong>{' '}
           $ {profile.salary}</FieldsBackground>
       </Candidate>
       <Home />

@@ -251,7 +251,7 @@ const Profile = props => {
         <Description><strong>Description:</strong></Description>
         <Fields>{profile.description}</Fields>
         <div>
-          <FieldsBackground><strong>Salary Requirements:</strong>
+          <FieldsBackground><strong>Salary Requirements:</strong>{' '}
             $ {profile.salary}</FieldsBackground>
         </div>
       </Candidate>

@@ -37,30 +37,30 @@ const Update = styled.h3`
   text-align: center;
 `
 
-// const Upload = styled.label`
-//   color: #00235c;
-//   text-align: center;
-//   border-radius: 33px;
-//   border: 2px solid #edb442;
-//   background: #edb442;
-//   color: #00235c;
-//   padding: 5px 20px;
-//   margin: 10px 0 5px;
-//   justifyContent: "center";
-//   alignItems: "center";
-//   :hover {
-// background: #00235c;
-// color: #fff;
-// cursor: pointer;
-// }
-// `
+const Upload = styled.label`
+  color: #00235c;
+  text-align: center;
+  border-radius: 33px;
+  border: 2px solid #edb442;
+  background: #edb442;
+  color: #00235c;
+  padding: 5px 20px;
+  margin: 10px 0 5px;
+  justifyContent: "center";
+  alignItems: "center";
+  :hover {
+background: #00235c;
+color: #fff;
+cursor: pointer;
+}
+`
 
-// const PreviewImg = styled.img`
-//   width: 350px;
-//   height: 100%;
-//   border-radius: 5px;
-//   margin-bottom: 15px;
-// `
+const PreviewImg = styled.img`
+  width: 350px;
+  height: 100%;
+  border-radius: 5px;
+  margin-bottom: 15px;
+`
 
 const Field = styled.h6`
   font-style: italic;
@@ -69,62 +69,58 @@ const Field = styled.h6`
   display: inline-block;
 `
 
-// class UploadPreview extends React.Component {
-//   constructor (props) {
-//     super(props)
-//     this.state = { file: null }
-//     this.onChange = this.onChange.bind(this)
-//     this.resetFile = this.resetFile.bind(this)
-//   }
-//   onChange (event) {
-//     this.setState({
-//       file: URL.createObjectURL(event.target.files[0])
-//     })
-//   }
-//
-//   resetFile (event) {
-//     event.preventDefault()
-//     this.setState({ file: null })
-//   }
-//   render () {
-//     return (
-//       <div className= 'input-group'>
-//         <Form.Group encType="multipart/form-data">
-//           <div className='custom-file'>
-//             <Form.Label style={{
-//               fontWeight: '600',
-//               color: '#00235c'
-//             }}>Upload A Profile Picture</Form.Label>{ ' ' }
-//             <Upload className="custom-file-lable" htmlFor="inputGroupFile01">
-//           Choose file
-//             </Upload>
-//             { ' ' }
-//             {this.state.file && (
-//               <div style={{ textAlign: 'right', marginRight: '20px' }}>
-//                 <Button remove onClick={this.resetFile}>Remove File</Button>
-//               </div>
-//             )}
-//             <Form.Control
-//               type="file"
-//               className='custom-file-input'
-//               style={{ background: 'transparent' }}
-//               name="file"
-//               onChange={this.onChange}
-//               id="inputGroupFile01"
-//             />
-//           </div>
-//         </Form.Group>
-//         <PreviewImg src={this.state.file} />
-//       </div>
-//     )
-//   }
-// }
+class UploadPreview extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = { file: null }
+    this.onChange = this.onChange.bind(this)
+    this.resetFile = this.resetFile.bind(this)
+  }
+  onChange (event) {
+    this.setState({
+      file: URL.createObjectURL(event.target.files[0])
+    })
+  }
+
+  resetFile (event) {
+    event.preventDefault()
+    this.setState({ file: null })
+  }
+  render () {
+    return (
+      <div className= 'input-group'>
+        <Form.Group encType="multipart/form-data">
+          <div className='custom-file'>
+            <Form.Label style={{
+              fontWeight: '600',
+              color: '#00235c'
+            }}>Upload A Profile Picture</Form.Label>{ ' ' }
+            <Upload className="custom-file-lable" htmlFor="inputGroupFile01">
+          Choose file
+            </Upload>
+            { ' ' }
+            {this.state.file && (
+              <div style={{ textAlign: 'right', marginRight: '20px' }}>
+                <Button remove onClick={this.resetFile}>Remove File</Button>
+              </div>
+            )}
+            <Form.Control
+              type="file"
+              className='custom-file-input'
+              style={{ background: 'transparent' }}
+              name="file"
+              onChange={this.onChange}
+              id="inputGroupFile01"
+            />
+          </div>
+        </Form.Group>
+        <PreviewImg src={this.state.file} />
+      </div>
+    )
+  }
+}
 
 // this goes right after <SpaceDiv>
-// <UploadPreview
-//   defaultValue={profile.profileUrl}
-//   name="file"
-//   onChange={handleChange}/>
 
 const UpdateForm = ({ profile, handleSubmit, handleChange, cancelPath }) => (
   <div className="row">
@@ -132,6 +128,9 @@ const UpdateForm = ({ profile, handleSubmit, handleChange, cancelPath }) => (
       <Update>Updating Profile:</Update>
       <Form onSubmit={handleSubmit}>
         <SpaceDiv>
+          <UploadPreview
+            name="file"
+            onChange={handleChange}/>
           <div action="" className="row">
             <div className="col">
               <Form.Group controlId="name">
