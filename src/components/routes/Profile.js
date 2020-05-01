@@ -8,6 +8,8 @@ import messages from '../AutoDismissAlert/messages'
 import Home from './Home'
 import Img from 'react-cool-img'
 import defaultImg from './images/addImage.png'
+import Modal from 'react-bootstrap/Modal'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const Your = styled.h2`
   text-align: center;
@@ -48,6 +50,9 @@ const Welcome = styled.h3`
 
 const Fields = styled.p`
   color: #00235c;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  word-wrap: break-word;
 `
 
 const Title = styled.p`
@@ -146,6 +151,10 @@ const FieldsBackground = styled.p`
 const Profile = props => {
   const [profile, setProfile] = useState(null)
   const [deleted, setDeleted] = useState(false)
+  const [show, setShow] = useState(false)
+
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
   // Call this callback once after the first render, this only occurs once
   // because our dependency array is empty, so our dependencies never change
@@ -208,11 +217,44 @@ const Profile = props => {
                 height: '100%',
                 borderRadius: '5px',
                 marginTop: '10px',
-                marginBottom: '10px' }}
+                marginBottom: '10px',
+                cursor: 'pointer'
+              }}
               placeholder={defaultImg}
               src={`${profile.profileUrl}`}
               alt='Portrait'
+              onClick={handleShow}
             />
+            <Modal
+              show={show}
+              onHide={handleClose}
+              size="lg"
+            >
+              <Modal.Header closeButton>
+                <Modal.Title style={{ color: '#00235c', fontWeight: '600' }}>
+                Meet {profile.name}, {profile.title}</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <Img
+                  style={{ width: '100%',
+                    height: '100%',
+                    borderRadius: '5px',
+                    marginTop: '10px',
+                    marginBottom: '10px' }}
+                  placeholder={defaultImg}
+                  src={`${profile.profileUrl}`}
+                  alt='Portrait'
+                />
+              </Modal.Body>
+              <Modal.Footer>
+                <button variant="secondary" onClick={handleClose}>
+                  Close
+                </button>
+                <button variant="primary" onClick={handleClose}>
+                  Save Changes
+                </button>
+              </Modal.Footer>
+            </Modal>
           </div>
           <Fields><strong>Location: </strong>{profile.location}</Fields>
           <div>
@@ -231,9 +273,13 @@ const Profile = props => {
           <Fields><strong>Email this Candidate:</strong>{' '}
             <a href={'mailto:' + profile.contact}>{profile.contact}</a>
           </Fields>
-          <Fields><strong>Website:</strong> {profile.website}</Fields>
-          <Fields><strong>Portfolio:</strong> {profile.portfolio}</Fields>
-          <Fields><strong>Other Website:</strong> {profile.other}</Fields>
+          <Fields><strong>Website:</strong> <a href={profile.website}
+            target='_blank' rel='noopener noreferrer' >{profile.website}</a></Fields>
+          <Fields><strong>Portfolio:</strong><a href={profile.portfolio}
+            target='_blank' rel='noopener noreferrer' >{profile.portfolio}
+          </a></Fields>
+          <Fields><strong>Other Website:</strong><a href={profile.other}
+            target='_blank' rel='noopener noreferrer' >{profile.other}</a></Fields>
           <ButtonS primary onClick={destroy}>Delete Profile</ButtonS> {' '}
           <Link to={`/profiles/${props.match.params.id}/edit`}>
             <ButtonS>Edit</ButtonS>
@@ -269,11 +315,43 @@ const Profile = props => {
               height: '100%',
               borderRadius: '5px',
               marginTop: '10px',
-              marginBottom: '10px' }}
+              marginBottom: '10px',
+              cursor: 'pointer' }}
             placeholder={defaultImg}
             src={`${profile.profileUrl}`}
             alt='Portrait'
+            onClick={handleShow}
           />
+          <Modal
+            show={show}
+            onHide={handleClose}
+            size="lg"
+          >
+            <Modal.Header closeButton>
+              <Modal.Title style={{ color: '#00235c', fontWeight: '600' }}>
+              Meet {profile.name}, {profile.title}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Img
+                style={{ width: '100%',
+                  height: '100%',
+                  borderRadius: '5px',
+                  marginTop: '10px',
+                  marginBottom: '10px' }}
+                placeholder={defaultImg}
+                src={`${profile.profileUrl}`}
+                alt='Portrait'
+              />
+            </Modal.Body>
+            <Modal.Footer>
+              <button variant="secondary" onClick={handleClose}>
+                Close
+              </button>
+              <button variant="primary" onClick={handleClose}>
+                Save Changes
+              </button>
+            </Modal.Footer>
+          </Modal>
         </div>
         <Fields>Location: {profile.location}</Fields>
         <div>
@@ -292,9 +370,13 @@ const Profile = props => {
         <Fields><strong>Email this Candidate:</strong>{' '}
           <a href={'mailto:' + profile.contact}>{profile.contact}</a>
         </Fields>
-        <Fields><strong>Website:</strong> { 'N/A' || profile.website }</Fields>
-        <Fields><strong>Portfolio:</strong> { 'N/A' || profile.portfolio }</Fields>
-        <Fields><strong>Other Website:</strong> { 'N/A' || profile.other }</Fields>
+        <Fields><strong>Website:</strong> <a href={profile.website}
+          target='_blank' rel='noopener noreferrer' >{profile.website}</a></Fields>
+        <Fields><strong>Portfolio:</strong><a href={profile.portfolio}
+          target='_blank' rel='noopener noreferrer' >{profile.portfolio}
+        </a></Fields>
+        <Fields><strong>Other Website:</strong><a href={profile.other}
+          target='_blank' rel='noopener noreferrer' >{profile.other}</a></Fields>
         <SpaceLink>
           <Link to="/profiles">Back to all Profiles</Link>
         </SpaceLink>

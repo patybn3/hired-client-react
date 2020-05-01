@@ -55,7 +55,6 @@ const ProfileEdit = props => {
   const handleSubmit = event => {
     event.preventDefault()
     const formData = new FormData(event.target)
-    formData.append('_id', profile)
 
     axios({
       url: `${apiUrl}/profiles/${props.match.params.id}`,

@@ -130,6 +130,7 @@ const UpdateForm = ({ profile, handleSubmit, handleChange, cancelPath }) => (
         <SpaceDiv>
           <UploadPreview
             name="file"
+            defaultValue={profile.profileUrl}
             onChange={handleChange}/>
           <div action="" className="row">
             <div className="col">
@@ -214,7 +215,7 @@ const UpdateForm = ({ profile, handleSubmit, handleChange, cancelPath }) => (
                 <Form.Label style={{ fontWeight: '600', color: '#00235c' }}>
                 Website <Field>(Optional)</Field></Form.Label>
                 <Form.Control
-                  type="text"
+                  type="url"
                   style={{ fontStyle: 'italic' }}
                   placeholder="Your Webpage"
                   defaultValue={profile.website}
@@ -230,7 +231,7 @@ const UpdateForm = ({ profile, handleSubmit, handleChange, cancelPath }) => (
                 <Form.Label style={{ fontWeight: '600', color: '#00235c' }}>
                 Portfolio <Field>(Optional)</Field></Form.Label>
                 <Form.Control
-                  type="text"
+                  type="url"
                   style={{ fontStyle: 'italic' }}
                   placeholder="e.g., GitHub (not required)"
                   defaultValue={profile.portfolio}
@@ -244,7 +245,7 @@ const UpdateForm = ({ profile, handleSubmit, handleChange, cancelPath }) => (
                 <Form.Label style={{ fontWeight: '600', color: '#00235c' }}>
                 Other Website <Field>(Optional)</Field></Form.Label>
                 <Form.Control
-                  type="text"
+                  type="url"
                   style={{ fontStyle: 'italic' }}
                   placeholder="e.g., LinkedIn (not required)"
                   defaultValue={profile.other}

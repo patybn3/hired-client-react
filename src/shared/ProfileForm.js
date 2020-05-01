@@ -226,6 +226,7 @@ const ProfileForm = ({ profile, handleSubmit, handleChange, cancelPath }) => (
                 <Form.Label style={{ fontWeight: '600', color: '#00235c' }}>
                 Website <Field>(Optional)</Field></Form.Label>
                 <Form.Control
+                  type='url'
                   style={{ fontStyle: 'italic' }}
                   placeholder="Your Webpage"
                   value={profile.website}
@@ -241,6 +242,7 @@ const ProfileForm = ({ profile, handleSubmit, handleChange, cancelPath }) => (
                 <Form.Label style={{ fontWeight: '600', color: '#00235c' }}>
                 Portfolio <Field>(Optional)</Field></Form.Label>
                 <Form.Control
+                  type='url'
                   style={{ fontStyle: 'italic' }}
                   placeholder="e.g., GitHub"
                   value={profile.portfolio}
@@ -254,6 +256,7 @@ const ProfileForm = ({ profile, handleSubmit, handleChange, cancelPath }) => (
                 <Form.Label style={{ fontWeight: '600', color: '#00235c' }}>
                 Other Website <Field>(Optional)</Field></Form.Label>
                 <Form.Control
+                  type='url'
                   style={{ fontStyle: 'italic' }}
                   placeholder="e.g., LinkedIn"
                   value={profile.other}
