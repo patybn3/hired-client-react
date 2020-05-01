@@ -57,9 +57,9 @@ const Fields = styled.p`
 
 const Title = styled.p`
   font-style: italic;
-  font-weight: 600;
+  text-shadow: 1px 1px 3px #fafafa;
   color: #d1941b;
-  font-size: 17px;
+  font-size: 19px;
 `
 
 const SideCandidate = styled.div`
@@ -140,13 +140,9 @@ const FieldsBackground = styled.p`
   background: #ffd582;
   padding: 10px;
 `
-// const Photo = styled.img`
-//   width: 250px;
-//   height: 100%;
-//   margin-top: 10px;
-//   margin-bottom: 10px;
-//   border-radius: 5px;
-// `
+const Name = styled.h3`
+  color: #00235c;
+`
 
 const Profile = props => {
   const [profile, setProfile] = useState(null)
@@ -209,7 +205,7 @@ const Profile = props => {
     return (
       <div>
         <SideCandidate>
-          <h2>{profile.name}</h2>
+          <Name>{profile.name}</Name>
           <Title>{profile.title}</Title>
           <div>
             <Img
@@ -220,7 +216,7 @@ const Profile = props => {
                 marginBottom: '10px',
                 cursor: 'pointer'
               }}
-              className='imgMouseOver'
+              className='imgmouseover'
               placeholder={defaultImg}
               src={`${profile.profileUrl}`}
               alt='Portrait'
@@ -306,7 +302,7 @@ const Profile = props => {
   return (
     <div>
       <SideCandidate>
-        <h2>{profile.name}</h2>
+        <Name>{profile.name}</Name>
         <Title>{profile.title}</Title>
         <div>
           <Img
@@ -316,7 +312,7 @@ const Profile = props => {
               marginTop: '10px',
               marginBottom: '10px',
               cursor: 'pointer' }}
-            className='imgMouseOver'
+            className='imgmouseover'
             placeholder={defaultImg}
             src={`${profile.profileUrl}`}
             alt='Portrait'

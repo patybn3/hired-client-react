@@ -9,9 +9,9 @@ const ButtonS = styled.button`
   background: #00235c;
   color: #fff;
   padding: 5px 20px;
-  margin: 20px 0 70px 50px;
-  justifyContent: "center";
-  alignItems: "center";
+  margin: 20px 0 40px 50px;
+  display: inline-block;
+  float: center;
   :hover {
 background: #edb442;
 color: #00235c;

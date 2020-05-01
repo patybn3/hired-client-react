@@ -45,11 +45,6 @@ cursor: pointer;
 }
 `
 
-const Name = styled.h2`
-  text-align: center;
-  color: #00235c;
-`
-
 const Title = styled.p`
   color: #d1941b;
   text-align: center;
@@ -82,6 +77,21 @@ const Location = styled.h6`
 //   display: inline-block;
 //   float: left;
 // `
+
+export function truncate (width) {
+  return `
+    width: ${width};
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  `
+}
+
+const Name = styled.h3`
+  text-align: center;
+  color: #00235c;
+  ${truncate('250px')}
+`
 
 const ProfilesOwned = props => {
   const [profiles, setProfiles] = useState([])

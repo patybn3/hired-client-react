@@ -4,6 +4,15 @@ body {
   font-family: 'Quicksand', sans-serif;
 }
 
-.imgMouseOver:hover {
-  opacity: 70%;
+.imgmouseover {
+  &:hover {
+    opacity: 70%;
+  }
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 250px;
 }

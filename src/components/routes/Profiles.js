@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import Home from './Home'
 import Img from 'react-cool-img'
 import defaultImg from './images/noimage.png'
+import loopImg from './images/loop.png'
 // import Uploads from './Uploads'
 
 const Inline = styled.div`
@@ -47,11 +48,6 @@ cursor: pointer;
 }
 `
 
-const Name = styled.h2`
-  text-align: center;
-  color: #00235c;
-`
-
 const Title = styled.p`
   color: #edb442;
   text-align: center;
@@ -65,28 +61,12 @@ const Location = styled.h6`
   margin-bottom: 30px;
 `
 
-const Skills = styled.p`
-  color: #fff;
-  text-align: center;
-  padding: 5px;
-  border-radius: 5px;
-  background: #00235c;
-  display: inline-block;
-  float: center;
-  margin-right: 3px;
-`
-
 const SkillTitle = styled.h6`
   color: #00235c;
   text-align: center;
   margin-top: 17px;
   margin-bottom: 10px;
 `
-// const Paragraph = styled.p`
-//   text-align: right;
-//   color: #00235c;
-//   padding: 5px 0;
-// `
 //
 // const Photo = styled.img`
 //   width: 150px;
@@ -96,8 +76,45 @@ const SkillTitle = styled.h6`
 //   float: left;
 // `
 
+export function truncate (width) {
+  return `
+    width: ${width};
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  `
+}
+
+const Name = styled.h3`
+  text-align: center;
+  color: #00235c;
+  ${truncate('250px')}
+`
+
+const Skills = styled.p`
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  background: #00235c;
+  display: inline-block;
+  float: center;
+  justify-content: center;
+  margin-right: 3px;
+`
+
+const SearchDiv = styled.div`
+  text-align: center;
+  margin: 3px 0 45px;
+`
+
+const SpaceDiv = styled.div`
+  margin-top: 50px;
+`
+
 const Profiles = props => {
   const [profiles, setProfiles] = useState([])
+  const [search, setSearch] = useState('')
 
   useEffect(() => {
     axios({
@@ -111,7 +128,13 @@ const Profiles = props => {
       .catch()
   }, [])
 
-  const profilesList = profiles.map(profile => (
+  const filterProfiles = profiles.filter(profile => {
+    return profile.title.toLowerCase().includes(search.toLowerCase()) ||
+    profile.name.toLowerCase().includes(search.toLowerCase()) ||
+    profile.location.toLowerCase().includes(search.toLowerCase())
+  })
+
+  const profilesList = filterProfiles.map(profile => (
     <Inline key={profile._id}>
       <Link
         to={`/profiles/${profile._id}`}
@@ -146,7 +169,7 @@ const Profiles = props => {
             <SkillTitle>Relevant Skills:</SkillTitle>
             <Skills>{profile.skills[0]}</Skills>{' '}
             <Skills>{profile.skills[1]}</Skills>{' '}
-            <Skills>{profile.skills[2]}</Skills>...
+            <Skills>{profile.skills[2]}</Skills>
           </div>
         </Candidates>
       </Link>
@@ -155,6 +178,28 @@ const Profiles = props => {
 
   return (
     <Fragment>
+      <SearchDiv className="input-group mb-3 col-md-8 mx-auto">
+        <input
+          type="text"
+          className="form-control"
+          aria-label="Default"
+          aria-describedby="inputGroup-sizing-default"
+          placeholder="Search By Name, Title or Location"
+          onChange={ event => setSearch(event.target.value)}/>
+        <div className="input-group-prepend">
+          <span className="input-group-text" id="inputGroup-sizing-sm">
+            <Img
+              placeholder={loopImg}
+              style={{
+                width: '35px',
+                height: '20px'
+              }}
+            />
+          </span>
+        </div>
+      </SearchDiv>
+      <SpaceDiv>
+      </SpaceDiv>
       {profilesList}
       <Home />
     </Fragment>

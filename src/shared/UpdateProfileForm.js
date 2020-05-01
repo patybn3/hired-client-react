@@ -146,6 +146,7 @@ const UpdateForm = ({ profile, handleSubmit, handleChange, cancelPath }) => (
                   placeholder="Enter your name"
                   defaultValue={profile.name}
                   name="name"
+                  maxLength={20}
                   onChange={handleChange}
                 />
               </Form.Group>
