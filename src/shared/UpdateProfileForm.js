@@ -94,7 +94,7 @@ class UploadPreview extends React.Component {
             <Form.Label style={{
               fontWeight: '600',
               color: '#00235c'
-            }}>Upload A Profile Picture</Form.Label>{ ' ' }
+            }}>Upload A Profile Picture <Field>(Required)</Field></Form.Label>{ ' ' }
             <Upload className="custom-file-lable" htmlFor="inputGroupFile01">
           Choose file
             </Upload>
@@ -105,6 +105,7 @@ class UploadPreview extends React.Component {
               </div>
             )}
             <Form.Control
+              required
               type="file"
               className='custom-file-input'
               style={{ background: 'transparent' }}
@@ -129,6 +130,7 @@ const UpdateForm = ({ profile, handleSubmit, handleChange, cancelPath }) => (
       <Form onSubmit={handleSubmit}>
         <SpaceDiv>
           <UploadPreview
+            required
             name="file"
             defaultValue={profile.profileUrl}
             onChange={handleChange}/>

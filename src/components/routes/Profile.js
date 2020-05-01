@@ -220,6 +220,7 @@ const Profile = props => {
                 marginBottom: '10px',
                 cursor: 'pointer'
               }}
+              className='imgMouseOver'
               placeholder={defaultImg}
               src={`${profile.profileUrl}`}
               alt='Portrait'
@@ -247,12 +248,6 @@ const Profile = props => {
                 />
               </Modal.Body>
               <Modal.Footer>
-                <button variant="secondary" onClick={handleClose}>
-                  Close
-                </button>
-                <button variant="primary" onClick={handleClose}>
-                  Save Changes
-                </button>
               </Modal.Footer>
             </Modal>
           </div>
@@ -317,6 +312,7 @@ const Profile = props => {
               marginTop: '10px',
               marginBottom: '10px',
               cursor: 'pointer' }}
+            className='imgMouseOver'
             placeholder={defaultImg}
             src={`${profile.profileUrl}`}
             alt='Portrait'
@@ -344,12 +340,6 @@ const Profile = props => {
               />
             </Modal.Body>
             <Modal.Footer>
-              <button variant="secondary" onClick={handleClose}>
-                Close
-              </button>
-              <button variant="primary" onClick={handleClose}>
-                Save Changes
-              </button>
             </Modal.Footer>
           </Modal>
         </div>

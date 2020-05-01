@@ -102,7 +102,7 @@ class UploadPreview extends React.Component {
             <Form.Label style={{
               fontWeight: '600',
               color: '#00235c'
-            }}>Upload A Profile Picture</Form.Label>{ ' ' }
+            }}>Upload A Profile Picture <Field>(Required)</Field></Form.Label>{ ' ' }
             <Upload className="custom-file-lable" htmlFor="inputGroupFile01">
           Choose file
             </Upload>
