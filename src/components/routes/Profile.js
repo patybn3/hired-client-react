@@ -59,7 +59,7 @@ const Title = styled.p`
   font-style: italic;
   font-weight: 600;
   color: #d1941b;
-  font-size: 20px;
+  font-size: 17px;
 `
 
 const SideCandidate = styled.div`
@@ -232,7 +232,11 @@ const Profile = props => {
               size="lg"
             >
               <Modal.Header closeButton>
-                <Modal.Title style={{ color: '#00235c', fontWeight: '600' }}>
+                <Modal.Title style={{
+                  color: '#00235c',
+                  fontWeight: '600',
+                  textAlign: 'center'
+                }}>
                 Meet {profile.name}, {profile.title}</Modal.Title>
               </Modal.Header>
               <Modal.Body>
@@ -270,10 +274,10 @@ const Profile = props => {
           </Fields>
           <Fields><strong>Website:</strong> <a href={profile.website}
             target='_blank' rel='noopener noreferrer' >{profile.website}</a></Fields>
-          <Fields><strong>Portfolio:</strong><a href={profile.portfolio}
+          <Fields><strong>Portfolio:</strong> <a href={profile.portfolio}
             target='_blank' rel='noopener noreferrer' >{profile.portfolio}
           </a></Fields>
-          <Fields><strong>Other Website:</strong><a href={profile.other}
+          <Fields><strong>Other Website:</strong> <a href={profile.other}
             target='_blank' rel='noopener noreferrer' >{profile.other}</a></Fields>
           <ButtonS primary onClick={destroy}>Delete Profile</ButtonS> {' '}
           <Link to={`/profiles/${props.match.params.id}/edit`}>
@@ -324,7 +328,11 @@ const Profile = props => {
             size="lg"
           >
             <Modal.Header closeButton>
-              <Modal.Title style={{ color: '#00235c', fontWeight: '600' }}>
+              <Modal.Title style={{
+                color: '#00235c',
+                fontWeight: '600',
+                textAlign: 'center'
+              }}>
               Meet {profile.name}, {profile.title}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -362,10 +370,10 @@ const Profile = props => {
         </Fields>
         <Fields><strong>Website:</strong> <a href={profile.website}
           target='_blank' rel='noopener noreferrer' >{profile.website}</a></Fields>
-        <Fields><strong>Portfolio:</strong><a href={profile.portfolio}
+        <Fields><strong>Portfolio:</strong> <a href={profile.portfolio}
           target='_blank' rel='noopener noreferrer' >{profile.portfolio}
         </a></Fields>
-        <Fields><strong>Other Website:</strong><a href={profile.other}
+        <Fields><strong>Other Website:</strong> <a href={profile.other}
           target='_blank' rel='noopener noreferrer' >{profile.other}</a></Fields>
         <SpaceLink>
           <Link to="/profiles">Back to all Profiles</Link>
