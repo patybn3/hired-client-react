@@ -214,7 +214,8 @@ const Profile = props => {
       style={{ width: '50px',
         height: '100%',
         marginTop: '10px',
-        textAlign: 'center',
+        display: 'inline-block',
+        float: 'center',
         marginBottom: '10px'
       }}
       placeholder={spinImg}
@@ -312,17 +313,17 @@ const Profile = props => {
           <Fields><strong>Email this Candidate:</strong>{' '}
             {/* a tag with href mailto will open email window with profile.
               contact email, if any */}
-            <a href={'mailto:' + profile.contact}>{profile.contact}</a>
+            <a href={'mailto:' + profile.contact}> {profile.contact}</a>
           </Fields>
           <Fields><strong>Website:</strong>
             {/* 2020 react changes, target="_blank" by itself is decrapitated
             must use rel='noopener noreferrer */}
             <a href={profile.website} target='_blank' rel='noopener noreferrer' >{profile.website}</a></Fields>
           <Fields><strong>Portfolio:</strong> <a href={profile.portfolio}
-            target='_blank' rel='noopener noreferrer' >{profile.portfolio}
+            target='_blank' rel='noopener noreferrer' > {profile.portfolio}
           </a></Fields>
           <Fields><strong>Other Website:</strong> <a href={profile.other}
-            target='_blank' rel='noopener noreferrer' >{profile.other}</a></Fields>
+            target='_blank' rel='noopener noreferrer' > {profile.other}</a></Fields>
           {/* Delete button calls destroy function */}
           <ButtonS primary onClick={destroy}>Delete Profile</ButtonS> {' '}
           {/* Edit button */}

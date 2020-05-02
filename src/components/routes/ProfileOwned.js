@@ -201,7 +201,8 @@ const Profile = props => {
       style={{ width: '50px',
         height: '100%',
         marginTop: '10px',
-        textAlign: 'center',
+        display: 'inline-block',
+        float: 'center',
         marginBottom: '10px'
       }}
       placeholder={spinImg}
@@ -280,15 +281,15 @@ const Profile = props => {
           <Skills>{profile.skills[9]}</Skills>{' '}
         </div>
         <Fields><strong>Email this Candidate:</strong>{' '}
-          <a href={'mailto:' + profile.contact}>{profile.contact}</a>
+          <a href={'mailto:' + profile.contact}> {profile.contact}</a>
         </Fields>
         <Fields><strong>Website:</strong> <a href={profile.website}
-          target='_blank' rel='noopener noreferrer' >{profile.website}</a></Fields>
+          target='_blank' rel='noopener noreferrer' > {profile.website}</a></Fields>
         <Fields><strong>Portfolio:</strong> <a href={profile.portfolio}
-          target='_blank' rel='noopener noreferrer' >{profile.portfolio}
+          target='_blank' rel='noopener noreferrer' > {profile.portfolio}
         </a></Fields>
         <Fields><strong>Other Website:</strong> <a href={profile.other}
-          target='_blank' rel='noopener noreferrer' >{profile.other}</a></Fields>
+          target='_blank' rel='noopener noreferrer' > {profile.other}</a></Fields>
         <ButtonS primary onClick={destroy}>Delete Profile</ButtonS> {' '}
         <Link to={`/profiles/${props.match.params.id}/edit`}>
           <ButtonS>Edit</ButtonS>
