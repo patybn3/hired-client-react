@@ -26,7 +26,7 @@ const Candidates = styled.div`
   width: 500px;
   margin: 15px 25px;
   padding: 20px 30px;
-  /* text-align: right; */
+  text-align: center;
   :hover {
 background: rgba(113,185,255,.4);
 cursor: pointer;
