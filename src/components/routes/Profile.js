@@ -214,6 +214,7 @@ const Profile = props => {
       style={{ width: '50px',
         height: '100%',
         marginTop: '10px',
+        textAlign: 'center',
         marginBottom: '10px'
       }}
       placeholder={spinImg}
