@@ -1,9 +1,12 @@
+// This file is built using reach components
+
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 
 import { signIn } from '../../api/auth'
 import messages from '../AutoDismissAlert/messages'
 
+// Forms from bootstrap
 import Form from 'react-bootstrap/Form'
 import styled from 'styled-components'
 import Home from '../routes/Home'
@@ -71,6 +74,7 @@ class SignIn extends Component {
     return (
       <div className="row">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
+          {/* using inline style to avoid importing styled components for one single thing */}
           <h3 style={{ fontWeight: '600', color: '#00235c' }}>Sign In</h3>
           <Form onSubmit={this.onSignIn}>
             <SpaceDiv>

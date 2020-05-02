@@ -37,14 +37,14 @@ cursor: pointer;
 const SpaceDiv = styled.div`
   margin-bottom: 100px;
 `
-
+// create profile title
 const Create = styled.h3`
   font-weight: 600;
   color: #00235c;
   margin-bottom: 40px;
   text-align: center;
 `
-
+// this label is made to look like a button.
 const Upload = styled.label`
   color: #00235c;
   text-align: center;
@@ -62,7 +62,7 @@ color: #fff;
 cursor: pointer;
 }
 `
-
+// img tag, how img will be displayed at preview
 const PreviewImg = styled.img`
   width: 350px;
   height: 100%;
@@ -76,7 +76,7 @@ const Field = styled.h6`
   font-weight: 400;
   display: inline-block;
 `
-
+// allows file to be uploaded to be previewed
 class UploadPreview extends React.Component {
   constructor (props) {
     super(props)
@@ -89,7 +89,7 @@ class UploadPreview extends React.Component {
       file: URL.createObjectURL(event.target.files[0])
     })
   }
-
+  // reset file button
   resetFile (event) {
     event.preventDefault()
     this.setState({ file: null })
@@ -97,21 +97,30 @@ class UploadPreview extends React.Component {
   render () {
     return (
       <div className= 'input-group'>
+        {/* Calls from.group from bootstrap, and passes form data */}
         <Form.Group encType="multipart/form-data">
           <div className='custom-file'>
+            {/* inline style since form.label is preset */}
             <Form.Label style={{
               fontWeight: '600',
               color: '#00235c'
             }}>Upload A Profile Picture</Form.Label>{ ' ' }
+            {/* this is label tag which is styled to look like a button it passes
+              an id which is called on the actual input that should show the real
+              button (below  on form.control) */}
             <Upload className="custom-file-lable" htmlFor="inputGroupFile01">
           Choose file
             </Upload>
             { ' ' }
+            {/* removed the file that is being previewed */}
             {this.state.file && (
               <div style={{ textAlign: 'right', marginRight: '20px' }}>
                 <Button remove onClick={this.resetFile}>Remove File</Button>
               </div>
             )}
+            {/* this is the actual form input for the file which is being masked
+              by the Upload label above, setting background to transparent makes
+              ugly button disappear */}
             <Form.Control
               required
               type="file"
@@ -123,6 +132,7 @@ class UploadPreview extends React.Component {
             />
           </div>
         </Form.Group>
+        {/* the actual file being displayed */}
         <PreviewImg src={this.state.file} />
       </div>
     )
@@ -133,15 +143,24 @@ const ProfileForm = ({ profile, handleSubmit, handleChange, cancelPath }) => (
   <div className="row">
     <div className="col-sm-10 col-md-8 mx-auto mt-5">
       <Create>Create a Profile</Create>
+      {/* onSubmit will make create call at ProfileCreate.js work at the click
+        of submit */}
       <Form onSubmit={handleSubmit}>
+        {/* SpaceDiv wraps the whole form */}
         <SpaceDiv>
+          {/* calls UploadPreview class for file preview, must pass these parameters
+            for the uplaod to work. UploadPreview class dont actually upload
+            anything, value and onChange is what makes this work */}
           <UploadPreview
             required
             value={profile.profileUrl}
             name="file"
             onChange={handleChange}/>
+          {/* Separates Name and title to be displayed next to each other */}
           <div action="" className="row">
+            {/* Name set up to display as a collum */}
             <div className="col">
+              {/* inline style when tag cannot be used on styled components */}
               <Form.Group >
                 <Form.Label style={{
                   fontWeight: '600',
@@ -159,6 +178,7 @@ const ProfileForm = ({ profile, handleSubmit, handleChange, cancelPath }) => (
                 />
               </Form.Group>
             </div>
+            {/* Title set up as a collumn */}
             <div className="col">
               <Form.Group>
                 <Form.Label style={{
@@ -176,8 +196,11 @@ const ProfileForm = ({ profile, handleSubmit, handleChange, cancelPath }) => (
                 />
               </Form.Group>
             </div>
+            {/* this set up ends here */}
           </div>
+          {/* row displays education and location side by side */}
           <div action="" className="row">
+            {/* Education set up as collumn */}
             <div className="col">
               <Form.Group>
                 <Form.Label style={{ fontWeight: '600', color: '#00235c' }}>
@@ -205,6 +228,7 @@ const ProfileForm = ({ profile, handleSubmit, handleChange, cancelPath }) => (
                 />
               </Form.Group>
             </div>
+            {/* This row ends here */}
           </div>
           <div action="" className="row">
             <div className="col">
@@ -284,6 +308,7 @@ const ProfileForm = ({ profile, handleSubmit, handleChange, cancelPath }) => (
           <div action="" className="row">
             <div className="col">
               <Form.Group>
+                {/* arrays require a key to be passed */}
                 <Form.Control
                   key={profile.skills[0]}
                   style={{ fontStyle: 'italic' }}

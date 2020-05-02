@@ -4,12 +4,19 @@ body {
   font-family: 'Quicksand', sans-serif;
 }
 
+// mouse over class to style profile.js and ProfilesOwned.js Picture
+// that is displayed inside of the SideCandidate so it looks like it is
+// clickable
 .imgmouseover {
   &:hover {
     opacity: 70%;
   }
 }
 
+// this style is part of the candicate name trucate set up on Profiles.js and
+// ProfilesOwned, I havent test deleting this CSS class, I assume I could since
+// the mentioned files have CSS set up of their own but I have decided to leave
+// this for now, for no aparent reason.
 .truncate {
   overflow: hidden;
   text-overflow: ellipsis;

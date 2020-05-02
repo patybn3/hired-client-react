@@ -1,3 +1,5 @@
+// refer to Profile.js for annotations
+
 import React, { useEffect, useState, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'

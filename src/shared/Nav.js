@@ -70,14 +70,14 @@ cursor: pointer;
                 `};
     }
 `
-
+// navigation buttons to create a profile, all profiles and my profiles
 const Nav = () => (
   <nav>
-    <Link to="/profiles-owned">
-      <ButtonS secondary type="submit">My Profiles</ButtonS>
-    </Link>
     <Link to="/profiles">
-      <ButtonS primary type="submit">All Profiles</ButtonS>
+      <ButtonS secondary type="submit">All Profiles</ButtonS>
+    </Link>
+    <Link to="/profiles-owned">
+      <ButtonS primary type="submit">My Profiles</ButtonS>
     </Link>
     <Link to="/create-profile">
       <ButtonS type="submit">Create a Profile</ButtonS>

@@ -1,8 +1,14 @@
+// this file was built with React Components, no hooks were used
+// passing component when react is import avoids the use of React.Component
+// to build it but it is a preferrence
 import React, { Component, Fragment } from 'react'
+// Route will take you to specific routes withing the app
 import { Route } from 'react-router-dom'
 
+// importing files, check files for notes
 import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
+
 import Header from '../Header/Header'
 import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'

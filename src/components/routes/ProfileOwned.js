@@ -1,3 +1,7 @@
+// this file uses React hooks
+// this is similar as Profile.js, except that this set up is used when a Profile
+// is accessed form the list of "my profiles", but the styling and calls are the
+// same
 import React, { useEffect, useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
@@ -207,6 +211,7 @@ const Profile = props => {
         <Name>{profile.name}</Name>
         <Title>{profile.title}</Title>
         <div>
+          {/* using inline style because this is a set tag from a package */}
           <Img
             style={{ width: '250px',
               height: '100%',
@@ -226,6 +231,7 @@ const Profile = props => {
             size="lg"
           >
             <Modal.Header closeButton>
+              {/* using inline style because this is a set tag from a package */}
               <Modal.Title style={{
                 color: '#00235c',
                 fontWeight: '600',
@@ -233,6 +239,7 @@ const Profile = props => {
               Meet {profile.name}, {profile.title}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
+              {/* using inline style because this is a set tag from a package */}
               <Img
                 style={{ width: '100%',
                   height: '100%',

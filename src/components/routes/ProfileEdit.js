@@ -3,9 +3,12 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 import apiUrl from '../../apiConfig'
+// imports the edit form form UpdateProfileForm.js
 import UpdateProfileForm from '../../shared/UpdateProfileForm'
 import messages from '../AutoDismissAlert/messages'
 
+// similar to the create profiles file, ProfileCreate.js, pass parameters, as
+// empty strings except by arrays
 const ProfileEdit = props => {
   const [profile, setProfile] = useState(
     { file: '',
@@ -51,7 +54,7 @@ const ProfileEdit = props => {
     // event.persist()
     // setProfile(profile => ({ ...profile, [event.target.name]: event.target.value }))
   }
-
+  // since again, using form data, use the same setup as create to patch
   const handleSubmit = event => {
     event.preventDefault()
     const formData = new FormData(event.target)
@@ -83,8 +86,6 @@ const ProfileEdit = props => {
       })
   }
   //
-  // const { movie, updated } = this.state
-  // const { handleChange, handleSubmit } = this
   if (updated) {
     return <Redirect to={`/profiles/${props.match.params.id}`} />
   }

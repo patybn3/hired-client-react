@@ -11,7 +11,7 @@ class AutoDismissAlert extends React.Component {
       show: true
     }
   }
-
+  // 1500 is for 1.5 sec the image will be up, works like a setTimeout jQuey call
   componentDidMount () {
     this.timer = setInterval(() => {
       this.setState({ show: false })
