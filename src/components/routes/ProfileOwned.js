@@ -12,14 +12,15 @@ import messages from '../AutoDismissAlert/messages'
 import Home from './Home'
 import Img from 'react-cool-img'
 import defaultImg from './images/addImage.png'
+import spinImg from './images/spin.gif'
 import Modal from 'react-bootstrap/Modal'
 import 'bootstrap/dist/css/bootstrap.min.css'
-
-const Your = styled.h2`
-  text-align: center;
-  color: #00235c;
-  padding: 20px 0 40px;
-`
+//
+// const Your = styled.h2`
+//   text-align: center;
+//   color: #00235c;
+//   padding: 20px 0 40px;
+// `
 
 const Candidate = styled.div`
   display: inline-block;
@@ -196,7 +197,15 @@ const Profile = props => {
   }
 
   if (!profile) {
-    return <Your>Your Profiles</Your>
+    return <Img
+      style={{ width: '50px',
+        height: '100%',
+        marginTop: '10px',
+        marginBottom: '10px'
+      }}
+      placeholder={spinImg}
+      alt='Loading'
+    />
   }
 
   if (deleted) {

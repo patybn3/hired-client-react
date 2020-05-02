@@ -11,15 +11,16 @@ import messages from '../AutoDismissAlert/messages'
 import Home from './Home'
 import Img from 'react-cool-img'
 import defaultImg from './images/addImage.png'
+import spinImg from './images/spin.gif'
 import Modal from 'react-bootstrap/Modal'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 // Your is the style for text displayed on the scheen if Profiles cannot be reached
-const Your = styled.h2`
-  text-align: center;
-  color: #00235c;
-  padding: 20px 0 40px;
-`
+// const Your = styled.h2`
+//   text-align: center;
+//   color: #00235c;
+//   padding: 20px 0 40px;
+// `
 // this is the div box contains the description of the candidate
 const Candidate = styled.div`
 /* first line was used to display this container next to the other container
@@ -209,7 +210,15 @@ const Profile = props => {
   }
   // if the profile does not exist, will display loading on the page
   if (!profile) {
-    return <Your>Loading</Your>
+    return <Img
+      style={{ width: '50px',
+        height: '100%',
+        marginTop: '10px',
+        marginBottom: '10px'
+      }}
+      placeholder={spinImg}
+      alt='Loading'
+    />
   }
   // returns to all profiles if the current profile is deleted
   if (deleted) {
